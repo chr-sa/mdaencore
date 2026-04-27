@@ -96,7 +96,7 @@ def AffinityPropagation(s, preference, float lam, int max_iterations, int conver
 
     # Prepare input and ouput arrays
     cdef numpy.ndarray[numpy.float32_t,  ndim=1] matndarray = numpy.ascontiguousarray(s._elements, dtype=numpy.float32)
-    cdef numpy.ndarray[numpy.int64_t,   ndim=1] clusters   = numpy.zeros((s.size),dtype=numpy.int64)
+    cdef numpy.ndarray[numpy.intp_t,   ndim=1] clusters   = numpy.zeros((s.size),dtype=numpy.intp)
 
     # run C module Affinity Propagation
     iterations = CAffinityPropagation(<float*>matndarray.data, cn, lam, max_iterations, convergence, noise, <long*>clusters.data)
